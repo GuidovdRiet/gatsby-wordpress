@@ -5,18 +5,18 @@ import styled from 'styled-components';
 class Header extends Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper background={this.props.styling.background}>
         <Title>Company name</Title>
-        <Link to="/page-2/">Go to page 2</Link>
+        <Link to="/companies/">Companies</Link>
       </Wrapper>
-    )
+    );
   }
 }
 
 export default Header;
 
 const Wrapper = styled.div`
-  background: #E34A63;
+  background: ${props => props.background};
   color: white;
   display: flex;
   justify-content: space-between;

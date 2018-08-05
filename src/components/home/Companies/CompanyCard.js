@@ -3,6 +3,13 @@ import styled from 'styled-components';
 import { push } from 'gatsby-link';
 
 class CompanyCard extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      coverPhoto: props.company.post_meta_fields.covers[0].split(',')[0],
+    };
+  }
+
   decodeHTML(html) {
     var txt = document.createElement('textarea');
     txt.innerHTML = html;
@@ -13,7 +20,7 @@ class CompanyCard extends Component {
     return (
       <Card
         onClick={() => push(`/bedrijf/${this.props.company.slug}`)}
-        background={this.props.company.post_meta_fields.covers[0].split(',')[0]}
+        background={this.state.coverPhoto}
       >
         <h1>{this.decodeHTML(this.props.company.title)}</h1>
       </Card>

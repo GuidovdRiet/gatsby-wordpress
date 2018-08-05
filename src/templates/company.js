@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Company extends Component {
   render() {
     const company = this.props.data.allWordpressWpCompany.edges[0].node;
-    return(
+    return (
       <div>
         <h1>{company.title}</h1>
         <h2>{company.post_meta_fields.city}</h2>
