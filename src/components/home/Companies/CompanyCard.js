@@ -11,7 +11,7 @@ class CompanyCard extends Component {
 
   render() {
     return (
-      <Card onClick={ () => push('/sdafjsakhfkldjahhfd/company')} background={this.props.company.post_meta_fields.covers[0]}>
+      <Card onClick={ () => push(`/bedrijf/${this.props.company.slug}`)} background={this.props.company.post_meta_fields.covers[0]}>
         <h1>{this.decodeHTML(this.props.company.title)}</h1>
       </Card>
     );

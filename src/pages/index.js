@@ -49,6 +49,7 @@ export const query = graphql`
         node {
           id
           title
+          slug
           post_meta_fields {
             covers
             address

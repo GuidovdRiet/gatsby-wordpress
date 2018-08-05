@@ -22,7 +22,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
         result.data.allWordpressWpCompany.edges.forEach(edge => {
           createPage({
-            path: edge.node.slug,
+            path: `bedrijf/${edge.node.slug}`,
             component: storeTemplate,
             context: {
               slug: edge.node.slug,
