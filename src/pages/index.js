@@ -1,13 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class indexPage extends Component {
-  render() {
-    return (
-      <div>
-        <p>Wordpress React Demo</p>
-      </div>
-    );
-  }
-}
+const indexPage = () => <h2>Home</h2>;
 
 export default indexPage;

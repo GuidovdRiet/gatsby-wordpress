@@ -4,7 +4,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
   const createCompanies = new Promise((resolve, reject) => {
-    const companyTemplate = path.resolve('src/templates/company.js');
+    const companyTemplate = path.resolve('src/templates/Company.js');
     resolve(
       graphql(`
         {
@@ -23,7 +23,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
         result.data.allWordpressWpCompany.edges.forEach(edge => {
           createPage({
-            path: `bedrijf/${edge.node.slug}`,
+            path: `winkels/${edge.node.slug}`,
             component: companyTemplate,
             context: {
               slug: edge.node.slug,
@@ -39,7 +39,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     resolve(
       graphql(`
         {
-          allWordpressPage {
+          allWordpressPage(filter: { slug: { ne: "home" } }) {
             edges {
               node {
                 slug
