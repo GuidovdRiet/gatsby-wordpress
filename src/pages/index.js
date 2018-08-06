@@ -4,7 +4,7 @@ class indexPage extends Component {
   render() {
     return (
       <div>
-        <h1>Wordpress React Demo</h1>
+        <p>Wordpress React Demo</p>
       </div>
     );
   }

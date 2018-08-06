@@ -6,7 +6,7 @@ class Header extends Component {
   render() {
     return (
       <Wrapper background={this.props.styling.background}>
-        <Title>Company name</Title>
+        <Logo logo={this.props.styling.logo.source_url}/>
         <Link to="/companies/">Companies</Link>
       </Wrapper>
     );
@@ -21,16 +21,21 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 40px;
+  padding: 20px 40px;
+  margin-bottom: 40px;
   & > a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(68, 69, 69, 0.6);
     text-decoration: none;
     &:hover {
-      color: white;
+      color: rgba(68, 69, 69, 1);
     }
   }
 `;
 
-const Title = styled.h1`
-  margin: 0;
+const Logo = styled.div`
+  background: url(${props => props.logo});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
 `;

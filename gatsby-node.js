@@ -2,8 +2,9 @@ const path = require('path');
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
-  return new Promise((resolve, reject) => {
-    const storeTemplate = path.resolve('src/templates/company.js');
+
+  const createCompanies = new Promise((resolve, reject) => {
+    const companyTemplate = path.resolve('src/templates/company.js');
     resolve(
       graphql(`
         {
@@ -23,14 +24,47 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         result.data.allWordpressWpCompany.edges.forEach(edge => {
           createPage({
             path: `bedrijf/${edge.node.slug}`,
-            component: storeTemplate,
+            component: companyTemplate,
             context: {
               slug: edge.node.slug,
             },
           });
         });
-        return;
       })
     );
   });
+
+  // Page name in cms needs to be the same as Template
+  const createPages = new Promise((resolve, reject) => {
+    resolve(
+      graphql(`
+        {
+          allWordpressPage {
+            edges {
+              node {
+                slug
+                title
+              }
+            }
+          }
+        }
+      `).then(result => {
+        if (result.errors) {
+          reject(result.errors);
+        }
+        result.data.allWordpressPage.edges.forEach(edge => {
+          const template = path.resolve(`src/templates/${edge.node.title}.js`);
+          createPage({
+            path: edge.node.slug,
+            component: template,
+            context: {
+              slug: edge.node.slug,
+            },
+          });
+        });
+      })
+    );
+  });
+
+  Promise.all([createCompanies, createPages]);
 };
