@@ -3,7 +3,8 @@ module.exports = {
     title: 'Gatsby Default Starter',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-wordpress`,
       options: {
@@ -15,6 +16,8 @@ module.exports = {
         baseUrl: `localhost:8888/wordpress-gatsby`,
         // The protocol. This can be http or https.
         protocol: `http`,
+
+        excludedRoutes: ["/wp/v2/users/me", "/wp/v2/settings"],
         // Indicates whether the site is hosted on wordpress.com.
         // If false, then the asumption is made that the site is self hosted.
         // If true, then the plugin will source its content on wordpress.com using the JSON REST API V2.

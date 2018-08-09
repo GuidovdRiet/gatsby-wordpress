@@ -29,6 +29,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               slug: edge.node.slug,
             },
           });
+          resolve();
         });
       })
     );
@@ -62,6 +63,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             },
           });
         });
+        resolve();
       })
     );
   });

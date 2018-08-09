@@ -5,8 +5,8 @@ import React, { Component } from 'react';
 import { injectGlobal } from 'styled-components';
 import styledNormalize from 'styled-normalize';
 
-import Header from '../components/home/Header';
-import Footer from '../components/home/Footer';
+import Header from '../components/global/Header';
+import Footer from '../components/global/Footer';
 
 injectGlobal`
   ${styledNormalize}
@@ -26,7 +26,7 @@ class Layout extends Component {
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
-        <Header styling={this.props.data.wordpressWpThemeStyling.acf} />
+        <Header styling={this.props.data.allWordpressWpThemeStyling.edges[0].node.acf} />
         <div>{this.props.children({ ...this.props })}</div>
         <Footer />
       </div>
@@ -42,11 +42,14 @@ export default Layout;
 
 export const query = graphql`
   query themeQuery {
-    wordpressWpThemeStyling {
-      acf {
-        background
-        logo {
-          source_url
+    allWordpressWpThemeStyling(filter: { title: { eq: "Header" } }) {
+      edges {
+        node {
+          title
+          acf {
+            logo
+            background
+          }
         }
       }
     }

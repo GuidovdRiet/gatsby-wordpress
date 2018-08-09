@@ -6,8 +6,8 @@ class Header extends Component {
   render() {
     return (
       <Wrapper background={this.props.styling.background}>
-        <Logo logo={this.props.styling.logo.source_url}/>
-        <Link to="/winkels/">Winkels</Link>
+        <Logo logo={this.props.styling.logo}/>
+        <Link to="/companies/">Winkels</Link>
       </Wrapper>
     );
   }

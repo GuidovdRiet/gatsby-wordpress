@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import CompanyCard from '../components/home/Companies/CompanyCard';
+import CompanyCard from '../components/companies/CompanyCard';
 
 class Companies extends Component {
   renderCompanies() {
