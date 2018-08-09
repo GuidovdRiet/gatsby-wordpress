@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { push } from 'gatsby-link';
+import ReactHtmlParser from 'react-html-parser';
 
 class CompanyCard extends Component {
   constructor(props) {
@@ -10,19 +11,13 @@ class CompanyCard extends Component {
     };
   }
 
-  decodeHTML(html) {
-    var txt = document.createElement('textarea');
-    txt.innerHTML = html;
-    return txt.value;
-  }
-
   render() {
     return (
       <Card
         onClick={() => push(`/winkels/${this.props.company.slug}`)}
         background={this.state.coverPhoto}
       >
-        <h1>{this.decodeHTML(this.props.company.title)}</h1>
+        <h1>{ReactHtmlParser(this.props.company.title)}</h1>
       </Card>
     );
   }
