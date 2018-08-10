@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Container, Row, Col } from 'reactstrap';
 
 import Quote from '../../src/components/home/Quote';
 import News from '../../src/components/home/News';
+import { log } from 'util';
 
 class indexPage extends Component {
   constructor(props) {
@@ -13,32 +15,29 @@ class indexPage extends Component {
     };
   }
 
+  calculateColumns(columns) {
+    const colSize = 12 / parseInt(columns);
+    console.log(colSize);
+    return colSize;
+  }
+
   render() {
     return (
       <Container>
-        <Wrapper>
-          {this.state.news && <News />}
-          {this.state.quote && <Quote />}
-        </Wrapper>
+        <Row>
+          <Col xs="12" md={`${this.calculateColumns(this.state.home_news_columns)}`}>
+            {this.state.news && <News />}
+          </Col>
+          <Col xs="12" md={`${this.calculateColumns(this.state.home_quote_columns)}`}>
+            {this.state.quote && <Quote />}
+          </Col>
+        </Row>
       </Container>
     );
   }
 }
 
 export default indexPage;
-
-const Container = styled.section`
-  display: flex;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  width: 90%;
-  max-width: 1130px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap-reverse;
-`;
 
 export const query = graphql`
   query getHomeData {
@@ -48,6 +47,8 @@ export const query = graphql`
           acf {
             quote
             news
+            home_quote_columns
+            home_news_columns
           }
         }
       }

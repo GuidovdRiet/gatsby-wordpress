@@ -17,7 +17,7 @@ module.exports = {
         // The protocol. This can be http or https.
         protocol: `http`,
 
-        excludedRoutes: ["/wp/v2/users/me", "/wp/v2/settings"],
+        excludedRoutes: ["/wp/v2/users/me", "/acf/v2/options", "/wp/v2/settings"],
         // Indicates whether the site is hosted on wordpress.com.
         // If false, then the asumption is made that the site is self hosted.
         // If true, then the plugin will source its content on wordpress.com using the JSON REST API V2.

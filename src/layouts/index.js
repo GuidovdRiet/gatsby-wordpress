@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import React, { Component } from 'react';
 
+import favicon from '../components/global/Images/favicon.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { injectGlobal } from 'styled-components';
 import styledNormalize from 'styled-normalize';
 
@@ -24,6 +26,9 @@ class Layout extends Component {
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
+          ]}
+          link={[
+            { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` },
           ]}
         />
         <Header
