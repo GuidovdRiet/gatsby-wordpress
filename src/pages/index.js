@@ -17,8 +17,8 @@ class indexPage extends Component {
     return (
       <Container>
         <Wrapper>
-          {this.state.news && <Quote />}
-          {this.state.quote && <News />}
+          {this.state.news && <News />}
+          {this.state.quote && <Quote />}
         </Wrapper>
       </Container>
     );
