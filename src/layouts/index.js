@@ -33,6 +33,9 @@ class Layout extends Component {
         />
         <Header
           styling={this.props.data.allWordpressWpThemeStyling.edges[0].node.acf}
+          menuItems={
+            this.props.data.allWordpressWpApiMenusMenusItems.edges[0].node.items
+          }
         />
         <div>{this.props.children({ ...this.props })}</div>
         <Footer />
@@ -56,6 +59,17 @@ export const query = graphql`
           acf {
             logo
             background
+          }
+        }
+      }
+    }
+    allWordpressWpApiMenusMenusItems {
+      edges {
+        node {
+          items {
+            object_slug
+            title
+            url
           }
         }
       }

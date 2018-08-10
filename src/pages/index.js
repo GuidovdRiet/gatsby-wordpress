@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 
 import Quote from '../../src/components/home/Quote';
 import News from '../../src/components/home/News';
-import { log } from 'util';
 
 class indexPage extends Component {
   constructor(props) {
@@ -25,10 +23,16 @@ class indexPage extends Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md={`${this.calculateColumns(this.state.home_news_columns)}`}>
+          <Col
+            xs="12"
+            md={`${this.calculateColumns(this.state.home_news_columns)}`}
+          >
             {this.state.news && <News />}
           </Col>
-          <Col xs="12" md={`${this.calculateColumns(this.state.home_quote_columns)}`}>
+          <Col
+            xs="12"
+            md={`${this.calculateColumns(this.state.home_quote_columns)}`}
+          >
             {this.state.quote && <Quote />}
           </Col>
         </Row>

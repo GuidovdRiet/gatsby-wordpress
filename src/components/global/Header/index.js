@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
+import { log } from 'util';
 
 class Header extends Component {
+
+  renderNavigationMenu() {
+    return this.props.menuItems.map(menuItem => (
+      <Link key={menuItem.object_slug} to={`/${menuItem.object_slug}/`}>{menuItem.title}</Link>
+    ));
+  }
+
   render() {
     return (
       <Wrapper background={this.props.styling.background}>
         <Logo logo={this.props.styling.logo}/>
-        <Link to="/companies/">Winkels</Link>
+        {this.renderNavigationMenu()}
       </Wrapper>
     );
   }

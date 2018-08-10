@@ -7,7 +7,7 @@ class Company extends Component {
     return (
       <div>
         <h1>{ReactHtmlParser(company.title)}</h1>
-        <h2>{company.post_meta_fields.city}</h2>
+        <h3>{company.post_meta_fields.city}</h3>
       </div>
     );
   }
