@@ -26,7 +26,9 @@ class Layout extends Component {
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
-        <Header styling={this.props.data.allWordpressWpThemeStyling.edges[0].node.acf} />
+        <Header
+          styling={this.props.data.allWordpressWpThemeStyling.edges[0].node.acf}
+        />
         <div>{this.props.children({ ...this.props })}</div>
         <Footer />
       </div>

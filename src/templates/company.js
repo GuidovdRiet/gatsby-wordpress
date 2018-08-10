@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import ReactHtmlParser from 'react-html-parser';
 
 class Company extends Component {
   render() {
     const company = this.props.data.allWordpressWpCompany.edges[0].node;
     return (
       <div>
-        <h1>{company.title}</h1>
+        <h1>{ReactHtmlParser(company.title)}</h1>
         <h2>{company.post_meta_fields.city}</h2>
       </div>
     );
